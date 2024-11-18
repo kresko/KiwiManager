@@ -1,0 +1,15 @@
+# Node.js dependencies
+node_modules/
+
+# JetBrains IDE settings (e.g., IntelliJ, WebStorm)
+.idea/
+
+# macOS files
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
