@@ -15,7 +15,7 @@
             <div class="category-container">
                 <% categories.forEach(category => { %>
                     <div class="category-item">
-                        <a href="#">
+                        <a href="categories/<%= category.category_key %>">
                             <img src="<%= category.url%>" alt="<%= category.name %>">
                             <h3><%= category.name %></h3>
                         </a>
