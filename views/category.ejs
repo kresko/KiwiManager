@@ -17,10 +17,15 @@
             <% productsByCategory.forEach(product =>  {%>
                 <div class="category-product">
                     <img src="<%= product.url%>" alt="Image">
-                    <h3><%= product.name %></h3>
-                    <p><%= product.description%></p>
-                    <p><%= product.base_price%></p>
-                    <p><%= product.price%></p>
+
+                    <div class="product-info">
+                        <h3><%= product.name %></h3>
+                        <p><%= product.description%></p>
+                        <div class="align-right">
+                            <p><%= product.base_price%>€</p>
+                            <p><%= product.price%>€</p>
+                        </div>
+                    </div>
                 </div>
             <% }) %>
         </div>
