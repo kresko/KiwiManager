@@ -6,6 +6,7 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Categories</title>
+        <script src="https://kit.fontawesome.com/4446a25d04.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/styles/styles.css">
     </head>
     <body>
@@ -15,6 +16,9 @@
             <div class="category-container">
                 <% categories.forEach(category => { %>
                     <div class="category-item">
+                        <div class="delete-category-button hidden">
+                            <a href="delete-category/<%= category.id_category %>"><i class="fa-solid fa-trash"></i></a>
+                        </div>
                         <a href="categories/<%= category.category_key %>">
                             <img src="<%= category.url%>" alt="<%= category.name %>">
                             <h3><%= category.name %></h3>
@@ -23,5 +27,7 @@
                 <% }) %>
             </div>
         </div>
+
+        <script src="/js/assets.js"></script>
     </body>
 </html>

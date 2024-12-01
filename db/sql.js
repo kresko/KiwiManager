@@ -18,8 +18,39 @@ const getCategoryNameByCategoryKeySql = `
     WHERE c.category_key = ($1)
 `;
 
+const dropCategoryConstraints = `
+    ALTER TABLE products DROP CONSTRAINT products_fk_category_fkey;
+`;
+
+const addCategoryConstraints = `
+    ALTER TABLE products
+        ADD CONSTRAINT products_fk_category_fkey
+            FOREIGN KEY (fk_category) REFERENCES categories(id_category)
+                ON DELETE CASCADE;
+`
+
+const deleteCategory = `
+    DELETE FROM categories WHERE id_category = ($1);
+`;
+
+const deleteProduct = `
+    DELETE FROM products p WHERE p.id_product = ($1);
+`;
+
+const getCategoryKeyByProductId = `
+    SELECT c.category_key
+    FROM categories c
+        INNER JOIN products p ON p.fk_category = c.id_category
+    WHERE p.id_product = ($1)
+`;
+
 module.exports = {
     getAllCategoriesSql,
     getProductsByCategoryKeySql,
     getCategoryNameByCategoryKeySql,
+    dropCategoryConstraints,
+    addCategoryConstraints,
+    deleteCategory,
+    deleteProduct,
+    getCategoryKeyByProductId
 }
