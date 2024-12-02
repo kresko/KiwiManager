@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><%= category.name %></title>
+    <script src="https://kit.fontawesome.com/4446a25d04.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
@@ -16,6 +17,10 @@
         <div class="category-products-container">
             <% productsByCategory.forEach(product =>  {%>
                 <div class="category-product">
+                    <div class="delete-product-button hidden">
+                        <a href="delete-product/<%= product.id_product %>"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+
                     <img src="<%= product.url%>" alt="Image">
 
                     <div class="product-info">
@@ -30,7 +35,7 @@
             <% }) %>
         </div>
 
-        <a href="/categories">Back</a>
+        <a href="/categories"><button class="button category-button">Back</button></a>
     </div>
 
 </body>

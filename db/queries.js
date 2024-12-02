@@ -19,8 +19,27 @@ async function getCategoryNameByCategoryKey(categoryKey) {
     return rows;
 }
 
+async function getCategoryKeyByProductId(productId) {
+    const { rows } = await pool.query(sql.getCategoryKeyByProductId, [productId]);
+
+    return rows;
+}
+
+async function deleteCategory(id) {
+    await pool.query(sql.dropCategoryConstraints);
+    await pool.query(sql.addCategoryConstraints);
+    await pool.query(sql.deleteCategory, [id]);
+}
+
+async function deleteProduct(id) {
+    await pool.query(sql.deleteProduct, [id]);
+}
+
 module.exports = {
     getAllCategories,
     getProductsByCategoryKey,
-    getCategoryNameByCategoryKey
+    getCategoryNameByCategoryKey,
+    deleteCategory,
+    deleteProduct,
+    getCategoryKeyByProductId
 }

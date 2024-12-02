@@ -20,8 +20,16 @@ async function getCategoryByCategoryKey(req, res) {
     res.render('category', { category: category, productsByCategory: productsByCategoryKey });
 }
 
+async function deleteCategory(req, res) {
+    const categoryId = req.params.id;
+    await db.deleteCategory(categoryId);
+
+    res.redirect(`/categories`);
+}
+
 module.exports = {
     redirectToCategories,
     getAllCategories,
     getCategoryByCategoryKey,
+    deleteCategory,
 }
